@@ -11,6 +11,20 @@ terraform {
 
 locals {
   node_count = 1
+  # these are the regions that support the metadata service
+  region = "se-sto" # stockholm
+  # "nl-ams" # amsterdam
+  # "in-maa" # chennai
+  # "us-ord" # chicago
+  # "id-cgk" # jakarta
+  # "us-lax" # los angeles
+  # "es-mad" # madrid
+  # "us-mia" # miami
+  # "it-mil" # milan
+  # "jp-osa" # osaka
+  # "fr-par" # paris
+  # "br-gru" # sao paolo
+  # "us-sea" # seattle
 }
 
 resource "linode_instance" "veilid" {
@@ -19,7 +33,7 @@ resource "linode_instance" "veilid" {
   image = "linode/ubuntu22.04"
   # picked the Sweden region because not all Linode regions support the metadata service, which we need
   # for the cloud-init script to work
-  region = "se-sto"
+  region = local.region
   type   = "g6-nanode-1"
 
   metadata {
