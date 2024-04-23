@@ -4,7 +4,9 @@ Details at https://veilid.com/
 
 Linode doesn't have a free tier, but it's still very cheap compared to the big 3 (AWS/GCP/Azure), so if you wanna run some veilid nodes on the cheap in the lesser cloud, you've come to the right place!
 
-The nanodes will cost you about $5/month.
+## Cost
+
+The nanodes will cost you about $5/month. In addition, because Linode doesn't currently charge for a single IPv4 address, we run these in dual-stack mode (IPv4/IPv6) by default.
 
 ## Setting up the node(s)
 
@@ -22,13 +24,16 @@ Make sure the token has Read Only scope for Events and Read/Write scope for Lino
 
 4. Now you should be able to run `terraform init && terraform apply`.
 
-You should see the IP address in the output
+You should see the IP addresses in the output
 
 ```sh
 Outputs:
 
-public_ip = [
-  "172.232.139.79",
+public_ipv4 = [
+  "172.234.99.146",
+]
+public_ipv6 = [
+  "2600:3c09::f03c:94ff:fe06:7304/128",
 ]
 ```
 
